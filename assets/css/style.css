@@ -33,12 +33,76 @@
 -----------------------------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Epilogue';
     overflow-x: hidden;
 }
 
+.gmap {
+    height: 435px;
+    width: 526px;
+}
+
+
+.timer {
+    margin-top: 30px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 14px 38px;
+}
+
+.time-box {
+    background: #F2EAFF;
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid #000;
+    width: 120px;
+    text-align: center;
+    flex-shrink: 0;
+    box-shadow: 5px 5px 0px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,1);
+}
+
+.label {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: #aaa;
+}
+
+#expired {
+    font-size: 2rem;
+    color: red;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px)
+{
+    .gmap {
+        height: 400px;
+        width: 400px;
+    }
+
+    .timer {
+    margin-top: -30px;
+}
+
+}
+    
 /* 1. preloader */
+
+
 .preloader {
     width: 100%;
     height: 100%;
@@ -49,7 +113,7 @@ body {
     position: fixed;
     z-index: 999999999999999999;
     right: 0;
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     top: 0;
     transition-duration: 1s;
     -webkit-transition-duration: 1s;
@@ -246,7 +310,7 @@ header:before {
     font-weight: bold;
 }
 .top-bar ul li a:hover,.top-bar a:hover{
-    color: #ff5c5c;
+    color: #7b00ff;
 }
 .top-bar ul li a,.top-bar a {
     transition: .3s ease-in-out;
@@ -350,11 +414,7 @@ img.video-img {
     margin-right: 17px;
     padding: 7px;
 }
-.video {
-    display: flex;
-    align-items: end;
-    margin-top: 40px;
-}
+
 .hero-text > img {
     margin-left: auto;
     display: block;
@@ -469,7 +529,7 @@ form#contact-form h3 {
 }
 /* 5. btn */
 .btn {
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     padding: 14px 38px;
     border-radius: 37px;
     color: #fff;
@@ -491,7 +551,7 @@ form#contact-form h3 {
 .heading span {
     font-size: 18px;
     letter-spacing: 1px;
-    color: #ff5c5c;
+    color: #7b00ff;
     font-weight: 900;
     padding-bottom: 10px;
     display: block;
@@ -512,7 +572,7 @@ form#contact-form h3 {
     position: absolute;
     width: 12px;
     height: 12px;
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     border-radius: 27px;
     border: 1px solid;
     left: 0;
@@ -593,7 +653,7 @@ form#contact-form h3 {
     height: 40px;
     position: absolute;
     bottom: 0;
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     border-radius: 50%;
     justify-content: center;
     align-items: center;
@@ -681,7 +741,7 @@ ul.star h6 {
     font-size: 16px;
     font-weight: 900;
     padding-top: 4px;
-    padding-left: 20px;
+    
     text-transform: uppercase;
 }
 .team .heading h2 {
@@ -758,7 +818,7 @@ a.brand i {
     margin-bottom: 55px;
 }
 .quotation-mark img {
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     width: 60px;
     height: 60px;
     border: 3px solid #000;
@@ -812,7 +872,7 @@ a.brand i {
 }
 .quotation button.owl-dot.active {
     border-radius: 21px;
-    border: 6px solid #ff5c5c;
+    border: 6px solid #7b00ff;
     background-color: transparent;
     width: 16px;
     height: 16px;
@@ -866,7 +926,7 @@ a.brand i {
     align-items: center;
     height: 70px;
     border: 3px solid #000;
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     padding: 18px;
     border-radius: 50%;
     position: absolute;
@@ -922,7 +982,7 @@ a.brand i {
     text-transform: capitalize;
 }
 .join-now-text span{
-    color: #ff5c5c;
+    color: #7b00ff;
 }
 .join-now-text h6 {
     padding-bottom: 40px;
@@ -979,7 +1039,7 @@ img.shaps {
     height: 2.5rem;
     transform: translateY(-50%);
     right: 1%;
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     border-radius: 50%;
     border: 1px solid #000;
 }
@@ -1165,7 +1225,7 @@ footer img.shaps {
     display: block;
     height: calc(110% - 15px);
     width: calc(110% - 15px);
-    background-color: #ff5c5c;
+    background-color: #7b00ff;
     border-radius: 50%;
     display: grid;
     place-items: center;
