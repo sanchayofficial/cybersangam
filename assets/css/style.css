@@ -720,12 +720,12 @@ form#contact-form h3 {
     transform: rotate3d(1, 1, 1, 360deg);
 }
 .service-text.three{
-    background-color: transparent;
+    background-color: #fff;
     margin-bottom: 30px;
 }
 .service-text.two{
     margin-top: 30px;
-    background-color: transparent;
+    background-color: #fff;
 }
 .service-text.two i {
     background-color: #d4ffcc;
