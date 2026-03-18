@@ -297,41 +297,102 @@
 <!-- services end -->
 
 <!-- section-consulting -->
-<!-- <section id="team" class="section-consulting gap ">
+<section id="team" class="section-consulting gap ">
   <div class="container">
     <div class="heading two heading-center">
-        <span>Meet our Team</span>
-        <h2>Group of mis-fits who are making CyberSangam possible </h2>
+        <span>Photo Gallery</span>
+        <h2>Some Moments from Our Events</h2>
       </div>
     <div class="consulting-business">
-      <div class="consulting-business-text"> 
+
+
+        <div class="gallery">
+          <div class="items items-large">
+            <img src="assets/img/gallery/1.jpg" />
+          </div>
+
+          <div class="items">
+            <img src="assets/img/gallery/2.jpg" />
+          </div>
+
+          <div class="items items-wide">
+            <img src="assets/img/gallery/3.jpg" />
+          </div>
+
+          <div class="items">
+            <img src="assets/img/gallery/4.jpg" />
+          </div>
+
+          <div class="items">
+            <img src="assets/img/gallery/5.jpg" />
+          </div>
+
+          <div class="items items-tall">
+            <img src="assets/img/gallery/6.jpg" />
+          </div>
+
+            <div class="items items-wide">
+            <img src="assets/img/gallery/7.jpg" />
+          </div>
+
+          <div class="items">
+            <img src="assets/img/gallery/8.jpg" />
+          </div>
+
+          <div class="items items-medium">
+            <img src="assets/img/gallery/9.jpg" />
+          </div>
+
+          <div class="items">
+            <img src="assets/img/gallery/10.jpg" />
+          </div>
+
+          <div class="items items-wide">
+            <img src="assets/img/gallery/11.jpg" />
+          </div>
+
+          <div class="items">
+            <img src="assets/img/gallery/12.jpg" />
+          </div> 
+
+         
+
+        </div>
+
+        
+ 
+        
+
+
+<!-- 
+      <div class="consulting-business-tex"> 
         <div class="consulting-business-img">
             <img alt="consulting-business" src="https://placehold.co/138x134">
             
         </div>
         <h5>Team Member</h5>
         <p>Position</p>
-      </div>
-      <div class="consulting-business-text"> 
+      </div> -->
+      <!-- <div class="consulting-business-text"> 
         <div class="consulting-business-img">
             <img alt="consulting-business" src="https://placehold.co/138x134">
             
         </div>
         <h5>Team Member </h5>
         <p>Position</p>
-      </div>
-      <div class="consulting-business-text mb-0"> 
+      </div> -->
+      <!-- <div class="consulting-business-text mb-0"> 
         <div class="consulting-business-img">
             <img alt="consulting-business" src="https://placehold.co/138x134">
             
         </div>
         <h5>Team Member</h5>
         <p>Position</p>
-      </div>
+      </div> -->
     </div>
   </div>
-</section> -->
-<!-- section-consulting end -->
+</section>
+<!-- section-consulting end
 
 <!-- quotation -->
 <section class="gap"> 
@@ -514,6 +575,11 @@
   </div>
 </footer>
 <!-- footer end -->
+<div class="lightbox" id="lightbox">
+          <span class="close">&times;</span>
+          <img class="lightbox-img" id="lightbox-img" />
+        </div>
+        
 <!-- progress -->
 <div id="progress">
       <span id="progress-value"><i class="fa-solid fa-arrow-up"></i></span>
@@ -530,4 +596,140 @@
   <script src="assets/js/sweetalert.min.js"></script>
   <script src="assets/js/contact.js"></script>
   <script src="assets/js/countdown.js"></script>
+
+  <!-- <script>
+  const images = document.querySelectorAll('.gallery .items');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.close');
+
+  // Open lightbox
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.classList.add('active');
+      lightboxImg.src = img.querySelector('img').src;
+      lightboxImg.animate([
+        { transform: "scale(0.6)", opacity: 0 },
+        { transform: "scale(1)", opacity: 1 }
+      ], {
+        duration: 300,
+        easing: "ease-out"
+      });
+    });
+  });
+
+  // Close on button
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  // Close on background click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target !== lightboxImg) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+      lightbox.classList.remove('active');
+    }
+  });
+</script> -->
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const gallery = document.querySelector('.gallery');
+  const lightbox = document.getElementById('lightbox');
+
+  let active = null;
+
+  gallery.addEventListener('click', (e) => {
+
+    const item = e.target.closest('.items');
+    if (!item) return;
+
+    const img = item.querySelector('img');
+    if (!img) return;
+
+    const rect = img.getBoundingClientRect();
+
+    const clone = img.cloneNode();
+    clone.classList.add('zoom-clone');
+
+    Object.assign(clone.style, {
+      top: rect.top + "px",
+      left: rect.left + "px",
+      width: rect.width + "px",
+      height: rect.height + "px"
+    });
+
+    document.body.appendChild(clone);
+
+    // Aspect ratio safe sizing
+    const ratio = img.naturalWidth / img.naturalHeight;
+    const maxW = window.innerWidth * 0.9;
+    const maxH = window.innerHeight * 0.9;
+
+    let finalW = maxW;
+    let finalH = finalW / ratio;
+
+    if (finalH > maxH) {
+      finalH = maxH;
+      finalW = finalH * ratio;
+    }
+
+    const finalTop = (window.innerHeight - finalH) / 2;
+    const finalLeft = (window.innerWidth - finalW) / 2;
+
+    // Save state
+    active = { clone, rect };
+
+    // Trigger animation
+    requestAnimationFrame(() => {
+      clone.style.top = finalTop + "px";
+      clone.style.left = finalLeft + "px";
+      clone.style.width = finalW + "px";
+      clone.style.height = finalH + "px";
+    });
+
+    lightbox.classList.add('active');
+  });
+
+  // 🔁 CLOSE (smooth reverse)
+  function closeLightbox() {
+    if (!active) return;
+
+    const { clone, rect } = active;
+
+    clone.style.top = rect.top + "px";
+    clone.style.left = rect.left + "px";
+    clone.style.width = rect.width + "px";
+    clone.style.height = rect.height + "px";
+
+    lightbox.classList.remove('active');
+
+    // remove after animation
+    setTimeout(() => {
+      clone.remove();
+      active = null;
+    }, 350);
+  }
+
+  // ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+
+  // click outside
+  lightbox.addEventListener('click', closeLightbox);
+
+});
+</script>
+
+
+
 </body>
