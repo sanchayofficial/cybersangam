@@ -140,9 +140,12 @@ body {
     }
 
     .timer {
-    margin-top: -30px;
-}
+    margin-top: -30px;  
+    }
 
+    #team{
+        display: none !important;
+    }
 }
     
 /* 1. preloader */
